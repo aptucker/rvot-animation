@@ -21,14 +21,14 @@ buttonOne.onClick = function() {
 buttonTwo.onClick = function() {
     
     app.beginUndoGroup("Function 2");
-    dotScale();
-    dotPosition();
-    linePosition();
-    mask1Position();
-    mask2Position();
-    nameMaskPosition();
+
+    logoKeyframeSetter();
+    // linePosition();
+    // mask1Position();
+    // mask2Position();
+    // nameMaskPosition();
     // nameOpacity();
-    sloganOpacity();
+    // sloganOpacity();
     // lineOpacity();
 
     app.endUndoGroup();
@@ -38,6 +38,49 @@ buttonTwo.onClick = function() {
 window.center();
 window.show();
 
+function logoKeyframeSetter(){
+    var compMiddleX = 1920/2;
+    var compMiddleY = 1080/2;
+
+    const dotScaleDict = {
+        layerName:["Middle-Dot"],
+        property:["scale"],
+        frames:[0, 0.1, 0.2],
+        value:[[0, 0], [150, 150], [100, 100]]
+    };
+
+    const dotPositionDict = {
+        layerName:["Middle-Dot"],
+        property:["position"],
+        frames:[0.4, 0.7],
+        value:[[compMiddleX, compMiddleY], [compMiddleX - 315, compMiddleY]]
+    };
+
+    const dotPropertiesDict = {
+        dotScale: dotScaleDict,
+        dotPosition: dotPositionDict
+    };
+
+
+    for (var key in dotPropertiesDict){
+        genKeyframeSetter(dotPropertiesDict[key]);
+    }
+
+}
+
+function genKeyframeSetter(propertiesDict){
+
+    var comp = app.project.activeItem;
+    var layer = comp.layer(String(propertiesDict.layerName));
+
+    var layerProperty = layer.property(String(propertiesDict.property));
+
+
+    for (var i in propertiesDict.frames){
+        layerProperty.setValueAtTime(propertiesDict.frames[i], propertiesDict.value[i]);
+    }
+}
+
 function maskBuilder(propertiesDict){
     var comp = app.project.activeItem;
 
@@ -46,12 +89,12 @@ function maskBuilder(propertiesDict){
 }
 
 function mask1Position(){
-    var maskStartX = 784;
+    var maskStartX = 900;
     var compMiddleY = 1080/2;
 
     const propertiesDict = {
-        frames:[0.5, 1.15],
-        position:[[maskStartX, compMiddleY], [maskStartX - 315 - 50, compMiddleY]]
+        frames:[0.5, 1.15, 1.16],
+        position:[[maskStartX, compMiddleY], [maskStartX - 315, compMiddleY], [maskStartX - 315 - 90, compMiddleY]]
     };
 
     for (var i=0; i < propertiesDict.frames.length; i++){
@@ -82,7 +125,7 @@ function nameMaskPosition(){
 
     const propertiesDict = {
         frames:[2, 2.5],
-        position:[[compMiddleX, compMiddleY], [compMiddleX + 400, compMiddleY]]
+        position:[[compMiddleX, compMiddleY], [compMiddleX + 800, compMiddleY]]
     };
 
     for (var i=0; i < propertiesDict.frames.length; i++){
@@ -108,20 +151,20 @@ function linePosition(){
 
 }
 
-function dotPosition(){
-    var compMiddleX = 1920/2;
-    var compMiddleY = 1080/2;
+// function dotPosition(){
+//     var compMiddleX = 1920/2;
+//     var compMiddleY = 1080/2;
 
-    const propertiesDict = {
-        frames:[0.5, 1.15],
-        position:[[compMiddleX, compMiddleY], [compMiddleX - 315, compMiddleY]]
-    };
+//     const propertiesDict = {
+//         frames:[0.5, 1.15],
+//         position:[[compMiddleX, compMiddleY], [compMiddleX - 315, compMiddleY]]
+//     };
 
-    for (var i=0; i < propertiesDict.frames.length; i++){
-        genPosititionSetter("Middle-Dot", propertiesDict.frames[i], propertiesDict.position[i]);
-    }
+//     for (var i=0; i < propertiesDict.frames.length; i++){
+//         genPosititionSetter("Middle-Dot", propertiesDict.frames[i], propertiesDict.position[i]);
+//     }
 
-}
+// }
 
 function namePosition() {
 
@@ -151,21 +194,21 @@ function nameOpacity(){
 
 }
 
-function dotScale() {
+// function dotScale() {
 
 
-    const propertiesDict = {
-        frames:[0, 0.2, 0.4],
-        scale:[[0, 0], [150, 150], [100, 100]]
-    };
+//     const propertiesDict = {
+//         frames:[0, 0.2, 0.4],
+//         scale:[[0, 0], [150, 150], [100, 100]]
+//     };
 
-    for (var i = 0; i < propertiesDict.frames.length; i++){
+//     for (var i = 0; i < propertiesDict.frames.length; i++){
         
-        genScaleSetter("Middle-Dot", propertiesDict.frames[i], propertiesDict.scale[i]);
-    }
+//         genScaleSetter("Middle-Dot", propertiesDict.frames[i], propertiesDict.scale[i]);
+//     }
 
 
-}
+// }
 
 
 function sloganOpacity(){
