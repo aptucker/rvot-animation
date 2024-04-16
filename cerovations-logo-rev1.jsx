@@ -42,11 +42,13 @@ function logoKeyframeSetter(){
     var compMiddleX = 1920/2;
     var compMiddleY = 1080/2;
 
+    // KeyframeInterpolationType.HOLD
     const dotScaleDict = {
         layerName:["Middle-Dot"],
         property:["scale"],
         frames:[0, 0.1, 0.2],
-        value:[[0, 0], [150, 150], [100, 100]]
+        value:[[0, 0], [150, 150], [100, 100]],
+        interpolation:[KeyframeInterpolationType.HOLD, KeyframeInterpolationType.HOLD, KeyframeInterpolationType.HOLD]
     };
 
     const dotPositionDict = {
@@ -78,6 +80,12 @@ function genKeyframeSetter(propertiesDict){
 
     for (var i in propertiesDict.frames){
         layerProperty.setValueAtTime(propertiesDict.frames[i], propertiesDict.value[i]);
+    }
+
+    if (typeof propertiesDict.interpolation !== 'undefined'){
+        for (var i=1; i < layerProperty.numKeys + 1; i++){
+            layerProperty.setInterpolationTypeAtKey(i, propertiesDict.interpolation[i-1]);
+        }
     }
 }
 
