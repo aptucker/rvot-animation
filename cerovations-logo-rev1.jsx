@@ -42,17 +42,16 @@ function logoKeyframeSetter(){
     var compMiddleX = 1920/2;
     var compMiddleY = 1080/2;
 
-    // KeyframeInterpolationType.HOLD
     const dotScaleDict = {
-        layerName:["Middle-Dot"],
+        layerName:["Middle-Dot-AE"],
         property:["scale"],
         frames:[0, 0.1, 0.2],
-        value:[[0, 0], [150, 150], [100, 100]],
-        interpolation:[KeyframeInterpolationType.HOLD, KeyframeInterpolationType.HOLD, KeyframeInterpolationType.HOLD]
+        value:[[0, 0], [150, 150], [100, 100]]//,
+        // interpolation:[KeyframeInterpolationType.HOLD, KeyframeInterpolationType.HOLD, KeyframeInterpolationType.HOLD]
     };
 
     const dotPositionDict = {
-        layerName:["Middle-Dot"],
+        layerName:["Middle-Dot-AE"],
         property:["position"],
         frames:[0.4, 0.7],
         value:[[compMiddleX, compMiddleY], [compMiddleX - 315, compMiddleY]]
@@ -63,10 +62,26 @@ function logoKeyframeSetter(){
         dotPosition: dotPositionDict
     };
 
-
     for (var key in dotPropertiesDict){
         genKeyframeSetter(dotPropertiesDict[key]);
     }
+
+
+    const lineTrimDict = {
+        layerName:["Middle-Line-AE"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[0.7, 0.9],
+        value:[10, 20]
+    };
+
+    const linePropertiesDict = {
+        dotTrim: lineTrimDict
+    };
+
+    for (var key in linePropertiesDict){
+        genKeyframeSetter(linePropertiesDict[key]);
+    }
+
 
 }
 
@@ -75,8 +90,10 @@ function genKeyframeSetter(propertiesDict){
     var comp = app.project.activeItem;
     var layer = comp.layer(String(propertiesDict.layerName));
 
-    var layerProperty = layer.property(String(propertiesDict.property));
-
+    var layerProperty = layer;
+    for (var i in propertiesDict.property){
+        var layerProperty = layerProperty.property(String(propertiesDict.property[i]));
+    }
 
     for (var i in propertiesDict.frames){
         layerProperty.setValueAtTime(propertiesDict.frames[i], propertiesDict.value[i]);
