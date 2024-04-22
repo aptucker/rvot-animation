@@ -52,7 +52,8 @@ buttonThree.onClick = function(){
 
     app.beginUndoGroup("Function 3");
 
-
+    liquidSetter();
+    gasSetter();
 
     app.endUndoGroup();
 
@@ -61,6 +62,255 @@ buttonThree.onClick = function(){
 window.center();
 window.show();
 
+
+function gasSetter(){
+    
+    var gasST = 14.0;
+
+    const rvotCutaway1OpacityDict = {
+        layerName:["RVOT-Cutaway"],
+        property:["opacity"],
+        frames:[0.0, gasST, gasST + 8.0],
+        value:[0, 100, 0],
+        interpolation:[KeyframeInterpolationType.HOLD,
+        KeyframeInterpolationType.HOLD,
+        KeyframeInterpolationType.HOLD]
+    };
+
+    const rvotCutaway2OpacityDict = {
+        layerName:["RVOT-Cutaway 2"],
+        property:["opacity"],
+        frames:[0.0, gasST, gasST + 8.0],
+        value:[0, 100, 0],
+        interpolation:[KeyframeInterpolationType.HOLD,
+        KeyframeInterpolationType.HOLD,
+        KeyframeInterpolationType.HOLD]
+    };
+
+    const rvotCutaway3OpacityDict = {
+        layerName:["RVOT-Cutaway 3"],
+        property:["opacity"],
+        frames:[0.0, gasST, gasST + 8.0],
+        value:[0, 100, 0],
+        interpolation:[KeyframeInterpolationType.HOLD,
+        KeyframeInterpolationType.HOLD,
+        KeyframeInterpolationType.HOLD]
+    };
+
+    const gasBubbleOpacityDict = {
+        layerName:["Bubble-2-Layer-Comp"],
+        property:["opacity"],
+        frames:[0.0, gasST, gasST + 8.0],
+        value:[0, 100, 0],
+        interpolation:[KeyframeInterpolationType.HOLD,
+        KeyframeInterpolationType.HOLD,
+        KeyframeInterpolationType.HOLD]
+    };
+
+    const rvotCutaway1PropertiesDict = {
+        rvotCutaway1Opacity: rvotCutaway1OpacityDict
+    };
+
+    const rvotCutaway2PropertiesDict = {
+        rvotCutaway2Opacity: rvotCutaway2OpacityDict
+    };
+
+    const rvotCutaway3PropertiesDict = {
+        rvotCutaway3Opacity: rvotCutaway3OpacityDict
+    };
+
+    const gasBubblePropertiesDict = {
+        gasBubbleOpacity: gasBubbleOpacityDict
+    };
+
+    for (var key in rvotCutaway1PropertiesDict){
+        genKeyframeSetter(rvotCutaway1PropertiesDict[key]);
+    }
+
+    for (var key in rvotCutaway2PropertiesDict){
+        genKeyframeSetter(rvotCutaway2PropertiesDict[key]);
+    }
+
+    for (var key in rvotCutaway3PropertiesDict){
+        genKeyframeSetter(rvotCutaway3PropertiesDict[key]);
+    }
+
+    for (var key in gasBubblePropertiesDict){
+        genKeyframeSetter(gasBubblePropertiesDict[key]);
+    }
+
+}
+
+function liquidSetter(){
+    var liquidStartX = 835;
+    var liquidStartY = 386;
+    var liquidEndX = 465;
+    var liquidEndY = 386;
+
+    var bubbleStartX = 842;
+    var bubbleStartY = 352
+    var bubbleEndX = 352;
+    var bubbleEndY = 352;
+
+    var liquidST = 2.0;
+
+
+
+    const evdCutaway1OpacityDict = {
+        layerName:["EVD-Cutaway"],
+        property:["opacity"],
+        frames:[0.0, liquidST, liquidST + 20.0],
+        value:[0, 100, 0],
+        interpolation:[KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD]
+    };
+
+    const evdCutaway2OpacityDict = {
+        layerName:["EVD-Cutaway 2"],
+        property:["opacity"],
+        frames:[0.0, liquidST, liquidST + 20.0],
+        value:[0, 100, 0],
+        interpolation:[KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD]
+    };
+
+    const evdCutaway3OpacityDict = {
+        layerName:["EVD-Cutaway 3"],
+        property:["opacity"],
+        frames:[0.0, liquidST, liquidST + 20.0],
+        value:[0, 100, 0],
+        interpolation:[KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD]
+    };
+
+    const evdCutaway4OpacityDict = {
+        layerName:["EVD-Cutaway 3"],
+        property:["opacity"],
+        frames:[0.0, liquidST, liquidST + 20.0],
+        value:[0, 100, 0],
+        interpolation:[KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD]
+    }
+
+    const liquidMainPositionDict = {
+        layerName:["Liquid"],
+        property:["position"],
+        frames:[liquidST, liquidST + 5.0],
+        value:[[liquidStartX, liquidStartY],
+        [liquidEndX, liquidEndY]]
+    };
+
+    const liquidMainOpacityDict = {
+        layerName:["Liquid"],
+        property:["opacity"],
+        frames:[0.0, liquidST, liquidST + 20.0],
+        value:[0, 100, 0],
+        interpolation:[KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD]
+    };
+
+    const liquidShadowPositionDict = {
+        layerName:["Liquid-Shadow"],
+        property:["position"],
+        frames:[liquidST, liquidST + 5.0],
+        value:[[liquidStartX, liquidStartY],
+        [liquidEndX, liquidEndY]]
+    };
+
+    const liquidShadowOpacityDict = {
+        layerName:["Liquid-Shadow"],
+        property:["opacity"],
+        frames:[0.0, liquidST, liquidST + 20.0],
+        value:[0, 100, 0],
+        interpolation:[KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD]
+    };
+
+    const bubbleCompOpacityDict = {
+        layerName:["Bubble-Layer-Comp"],
+        property:["opacity"],
+        frames:[0.0, liquidST, liquidST + 20.0],
+        value:[0, 100, 0],
+        interpolation:[KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD,
+            KeyframeInterpolationType.HOLD]
+    };
+
+    const bubbleCompPositionDict = {
+        layerName:["Bubble-Layer-Comp"],
+        property:["position"],
+        frames:[liquidST, liquidST + 5.0],
+        value:[[bubbleStartX, bubbleStartY],
+        [bubbleEndX, bubbleEndY]],
+    };
+    
+    const liquidMainPropertiesDict = {
+        liquidMainOpacity: liquidMainOpacityDict,
+        liquidMainPosition: liquidMainPositionDict
+    };
+
+    const liquidShadowPropertiesDict = {
+        liquidShadowOpacity: liquidShadowOpacityDict,
+        liquidShadowPosition: liquidShadowPositionDict
+    };
+
+    const evdCutaway1PropertiesDict = {
+        evdCutaway1Opacity: evdCutaway1OpacityDict
+    };
+
+    const evdCutaway2PropertiesDict = {
+        evdCutaway2Opacity: evdCutaway2OpacityDict
+    };
+
+    const evdCutaway3PropertiesDict = {
+        evdCutaway3Opacity: evdCutaway3OpacityDict
+    };
+
+    const evdCutaway4PropertiesDict = {
+        evdCutaway4Opacity: evdCutaway4OpacityDict
+    };
+
+    const bubbleCompPropertiesDict = {
+        bubbleCompOpacity: bubbleCompOpacityDict,
+        bubbleCompPosition: bubbleCompPositionDict
+    };
+
+    for (var key in liquidMainPropertiesDict){
+        genKeyframeSetter(liquidMainPropertiesDict[key]);
+    }
+
+    for (var key in liquidShadowPropertiesDict){
+        genKeyframeSetter(liquidShadowPropertiesDict[key]);
+    }
+
+    for (var key in evdCutaway1PropertiesDict){
+        genKeyframeSetter(evdCutaway1PropertiesDict[key]);
+    }
+
+    for (var key in evdCutaway2PropertiesDict){
+        genKeyframeSetter(evdCutaway2PropertiesDict[key]);
+    }
+
+    for (var key in evdCutaway3PropertiesDict){
+        genKeyframeSetter(evdCutaway3PropertiesDict[key]);
+    }
+
+    for (var key in evdCutaway4PropertiesDict){
+        genKeyframeSetter(evdCutaway4PropertiesDict[key]);
+    }
+
+    for (var key in bubbleCompPropertiesDict){
+        genKeyframeSetter(bubbleCompPropertiesDict[key]);
+    }
+
+
+}
 
 function rtbSetter(){
 
