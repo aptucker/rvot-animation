@@ -14,8 +14,11 @@ var buttonThree = buttonGroup.add("button", undefined, "Test 3");
 buttonOne.onClick = function() {
     app.beginUndoGroup("Function 1");
 
-    liquidSetter();
-    bgSetter();
+    introSequence();
+    textBox1Setter();
+    text1Setter();
+    textBox2Setter();
+    text2Setter();
 
     app.endUndoGroup();
 }
@@ -24,7 +27,7 @@ buttonTwo.onClick = function() {
     
     app.beginUndoGroup("Function 2");
 
-
+    rvotPosition();
 
     app.endUndoGroup();
 
@@ -34,6 +37,8 @@ buttonThree.onClick = function(){
 
     app.beginUndoGroup("Function 3");
 
+    liquidSetter();
+    bgSetter();
 
     app.endUndoGroup();
 
@@ -42,84 +47,93 @@ buttonThree.onClick = function(){
 window.center();
 window.show();
 
+function rvotPosition(){
+    var compMiddleX = 1920/2;
+    var compMiddleY = 1080/2;
 
-function gasSetter(){
-    
-    var gasST = 14.0;
+    var rvotStartX = 820;
+    var rvotStartY = -205;
+    var rvotEndX = 955;
+    var rvotEndY = 160;
 
-    const rvotCutaway1OpacityDict = {
-        layerName:["RVOT-Cutaway"],
-        property:["opacity"],
-        frames:[0.0, gasST, gasST + 8.0],
-        value:[0, 100, 0],
-        interpolation:[KeyframeInterpolationType.HOLD,
-        KeyframeInterpolationType.HOLD,
-        KeyframeInterpolationType.HOLD]
+    var rvotST = 18.0;
+    // var rvotST = 0.2;
+
+    const rvotPositionDict = {
+        layerName:["RVOT"],
+        property:["position"],
+        frames:[rvotST, rvotST + 1.0],
+        value:[[rvotStartX, rvotStartY],
+        [rvotEndX, rvotEndY]]
     };
 
-    const rvotCutaway2OpacityDict = {
-        layerName:["RVOT-Cutaway 2"],
-        property:["opacity"],
-        frames:[0.0, gasST, gasST + 8.0],
-        value:[0, 100, 0],
-        interpolation:[KeyframeInterpolationType.HOLD,
-        KeyframeInterpolationType.HOLD,
-        KeyframeInterpolationType.HOLD]
+    const rvotPropertiesDict = {
+        rvotPosition: rvotPositionDict
     };
 
-    const rvotCutaway3OpacityDict = {
-        layerName:["RVOT-Cutaway 3"],
-        property:["opacity"],
-        frames:[0.0, gasST, gasST + 8.0],
-        value:[0, 100, 0],
-        interpolation:[KeyframeInterpolationType.HOLD,
-        KeyframeInterpolationType.HOLD,
-        KeyframeInterpolationType.HOLD]
-    };
-
-    const gasBubbleOpacityDict = {
-        layerName:["Bubble-2-Layer-Comp"],
-        property:["opacity"],
-        frames:[0.0, gasST, gasST + 8.0],
-        value:[0, 100, 0],
-        interpolation:[KeyframeInterpolationType.HOLD,
-        KeyframeInterpolationType.HOLD,
-        KeyframeInterpolationType.HOLD]
-    };
-
-    const rvotCutaway1PropertiesDict = {
-        rvotCutaway1Opacity: rvotCutaway1OpacityDict
-    };
-
-    const rvotCutaway2PropertiesDict = {
-        rvotCutaway2Opacity: rvotCutaway2OpacityDict
-    };
-
-    const rvotCutaway3PropertiesDict = {
-        rvotCutaway3Opacity: rvotCutaway3OpacityDict
-    };
-
-    const gasBubblePropertiesDict = {
-        gasBubbleOpacity: gasBubbleOpacityDict
-    };
-
-    for (var key in rvotCutaway1PropertiesDict){
-        genKeyframeSetter(rvotCutaway1PropertiesDict[key]);
+    for (var key in rvotPropertiesDict){
+        genKeyframeSetter(rvotPropertiesDict[key]);
     }
 
-    for (var key in rvotCutaway2PropertiesDict){
-        genKeyframeSetter(rvotCutaway2PropertiesDict[key]);
+
+
+}
+
+function introSequence(){
+
+    var introST = 0.0;
+
+    const topOpacityDict = {
+        layerName:["Top-Fade"],
+        property:["opacity"],
+        frames:[introST, introST + 0.3],
+        value:[100, 0]
+    };
+
+    const topPropertiesDict = {
+        topOpacity: topOpacityDict
+    };
+
+    var tbiST = 0.5
+
+    const tbiOpacityDict = {
+        layerName:["TBI"],
+        property:["opacity"],
+        frames:[tbiST, tbiST + 8.0, tbiST + 9.0],
+        value:[0, 100, 0]
+    };
+
+    const tbiPropertiesDict = {
+        tbiOpacity: tbiOpacityDict
+    };
+
+    const hfOpacityDict = {
+        layerName:["Head-Full"],
+        property:["opacity"],
+        frames:[0.0, tbiST + 10.0, tbiST + 11.0],
+        value:[100, 100, 0]
+    };
+
+    const hfPropertiesDict = {
+        hfOpacity: hfOpacityDict
+    };
+
+
+
+    for (var key in topPropertiesDict){
+        genKeyframeSetter(topPropertiesDict[key]);
     }
 
-    for (var key in rvotCutaway3PropertiesDict){
-        genKeyframeSetter(rvotCutaway3PropertiesDict[key]);
+    for (var key in tbiPropertiesDict){
+        genKeyframeSetter(tbiPropertiesDict[key]);
     }
 
-    for (var key in gasBubblePropertiesDict){
-        genKeyframeSetter(gasBubblePropertiesDict[key]);
+    for (var key in hfPropertiesDict){
+        genKeyframeSetter(hfPropertiesDict[key]);
     }
 
 }
+
 
 function liquidSetter(){
     var liquidStartX = 1086;
@@ -204,6 +218,363 @@ function bgSetter(){
 
 
 
+
+}
+
+
+function textBox3Setter(){
+
+    var compMiddleX = 1920/2;
+    var compMiddleY = 1080/2;
+
+    var tb1TST = 16.0;
+
+    const textBox5TrimStartDict = {
+        layerName:["Text-Box-5"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST, tb1TST + 0.5],
+        value:[100, 50]
+    };
+
+    const textBox6TrimStartDict = {
+        layerName:["Text-Box-6"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST, tb1TST + 0.5],
+        value:[100, 50]
+    };
+
+    const textBox5TrimEndDict = {
+        layerName:["Text-Box-5"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST + 7.0, tb1TST + 7.5],
+        value:[50, 100]
+    };
+
+    const textBox6TrimEndDict = {
+        layerName:["Text-Box-6"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST + 7.0, tb1TST + 7.5],
+        value:[50, 100]
+    };
+
+    const textBox5ScaleDict = {
+        layerName:["Text-Box-5"],
+        property:["scale"],
+        frames:[tb1TST + 0.5, tb1TST + 7.5],
+        value:[[100, 100], [105, 105]]
+    };
+
+    const textBox6ScaleDict = {
+        layerName:["Text-Box-6"],
+        property:["scale"],
+        frames:[tb1TST + 0.5, tb1TST + 7.5],
+        value:[[100, 100], [105, 105]]
+    };
+
+    const textBox5PropertiesDict = {
+        textBox5TrimStart: textBox5TrimStartDict,
+        textBox5TrimEnd: textBox5TrimEndDict,
+        textBox5Scale: textBox5ScaleDict
+    };
+
+    const textBox6PropertiesDict = {
+        textBox6TrimStart: textBox6TrimStartDict,
+        textBox6TrimEnd: textBox6TrimEndDict,
+        textBox6Scale: textBox6ScaleDict
+    };
+
+
+    for (var key in textBox5PropertiesDict){
+        genKeyframeSetter(textBox5PropertiesDict[key]);
+    }
+
+    for (var key in textBox6PropertiesDict){
+        genKeyframeSetter(textBox6PropertiesDict[key]);
+    }
+
+
+}
+
+function text4Setter(){
+    var text4StartX = 960;
+    var text4StartY = 590;
+
+    var compMiddleX = 1920/2;
+    var compMiddleY = 1080/2;
+
+    var t1ST = 16.0;
+
+    const text4OpacityDict = {
+        layerName:["Persist"],
+        property:["opacity"],
+        frames:[t1ST, t1ST + 0.1, t1ST + 9.9, t1ST + 10.0],
+        value:[0, 100, 100, 0]
+    };
+
+    const text4ScaleDict = {
+        layerName:["Persist"],
+        property:["scale"],
+        frames:[t1ST + 0.5, t1ST + 7.5, t1ST + 10.0],
+        value:[[100, 100], [105, 105], [115, 115]]
+    };
+
+    const text4PositionDict = {
+        layerName:["Persist"],
+        property:["position"],
+        frames:[0.0, t1ST + 7.5, t1ST + 8.0],
+        value:[[text4StartX, text4StartY],
+        [text4StartX, text4StartY],
+        [compMiddleX, compMiddleY]]
+    };
+
+    const text4PropertiesDict = {
+        text4Opacity: text4OpacityDict,
+        text4Scale: text4ScaleDict//,
+        // text4Position: text4PositionDict
+    };
+
+    for (var key in text4PropertiesDict){
+        genKeyframeSetter(text4PropertiesDict[key]);
+    }
+
+}
+
+function text3Setter(){
+    var text3StartX = 960;
+    var text3StartY = 460;
+
+    var t1ST = 16.0;
+
+    const text3OpacityDict = {
+        layerName:["Edema"],
+        property:["opacity"],
+        frames:[t1ST, t1ST + 0.1, t1ST + 7.0, t1ST + 7.5],
+        value:[0, 100, 100, 0]
+    };
+
+    const text3ScaleDict = {
+        layerName:["Edema"],
+        property:["scale"],
+        frames:[t1ST + 0.5, t1ST + 7.5],
+        value:[[100, 100], [105, 105]]
+    };
+
+    const text3PropertiesDict = {
+        text3Opacity: text3OpacityDict,
+        text3Scale: text3ScaleDict
+    };
+
+    for (var key in text3PropertiesDict){
+        genKeyframeSetter(text3PropertiesDict[key]);
+    }
+
+}
+
+function textBox2Setter(){
+
+    var compMiddleX = 1920/2;
+    var compMiddleY = 1080/2;
+
+    var tb1TST = 10.0;
+
+    const textBox3TrimStartDict = {
+        layerName:["Text-Box-3"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST, tb1TST + 0.5],
+        value:[100, 50]
+    };
+
+    const textBox4TrimStartDict = {
+        layerName:["Text-Box-4"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST, tb1TST + 0.5],
+        value:[100, 50]
+    };
+
+    const textBox3TrimEndDict = {
+        layerName:["Text-Box-3"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST + 7.0, tb1TST + 7.5],
+        value:[50, 100]
+    };
+
+    const textBox4TrimEndDict = {
+        layerName:["Text-Box-4"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST + 7.0, tb1TST + 7.5],
+        value:[50, 100]
+    };
+
+    const textBox3ScaleDict = {
+        layerName:["Text-Box-3"],
+        property:["scale"],
+        frames:[tb1TST + 0.5, tb1TST + 7.5],
+        value:[[100, 100], [105, 105]]
+    };
+
+    const textBox4ScaleDict = {
+        layerName:["Text-Box-4"],
+        property:["scale"],
+        frames:[tb1TST + 0.5, tb1TST + 7.5],
+        value:[[100, 100], [105, 105]]
+    };
+
+    const textBox3PropertiesDict = {
+        textBox3TrimStart: textBox3TrimStartDict,
+        textBox3TrimEnd: textBox3TrimEndDict,
+        textBox3Scale: textBox3ScaleDict
+    };
+
+    const textBox4PropertiesDict = {
+        textBox4TrimStart: textBox4TrimStartDict,
+        textBox4TrimEnd: textBox4TrimEndDict,
+        textBox4Scale: textBox4ScaleDict
+    };
+
+
+    for (var key in textBox3PropertiesDict){
+        genKeyframeSetter(textBox3PropertiesDict[key]);
+    }
+
+    for (var key in textBox4PropertiesDict){
+        genKeyframeSetter(textBox4PropertiesDict[key]);
+    }
+
+
+}
+
+function text2Setter(){
+    var text2StartX = 1610;
+    var text2StartY = 240;
+
+    var t1ST = 10.0;
+
+    const text2OpacityDict = {
+        layerName:["EVD-Catheters"],
+        property:["opacity"],
+        frames:[t1ST, t1ST + 0.1, t1ST + 7.0, t1ST + 7.5],
+        value:[0, 100, 100, 0]
+    };
+
+    const text2ScaleDict = {
+        layerName:["EVD-Catheters"],
+        property:["scale"],
+        frames:[t1ST + 0.5, t1ST + 7.5],
+        value:[[100, 100], [105, 105]]
+    };
+
+    const text2PropertiesDict = {
+        text2Opacity: text2OpacityDict,
+        text2Scale: text2ScaleDict
+    };
+
+    for (var key in text2PropertiesDict){
+        genKeyframeSetter(text2PropertiesDict[key]);
+    }
+
+}
+
+function textBox1Setter(){
+
+    var compMiddleX = 1920/2;
+    var compMiddleY = 1080/2;
+
+    var tb1TST = 2.2;
+
+    const textBox1TrimStartDict = {
+        layerName:["Text-Box-1"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST, tb1TST + 0.5],
+        value:[100, 50]
+    };
+
+    const textBox2TrimStartDict = {
+        layerName:["Text-Box-2"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST, tb1TST + 0.5],
+        value:[100, 50]
+    };
+
+    const textBox1TrimEndDict = {
+        layerName:["Text-Box-1"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST + 7.0, tb1TST + 7.5],
+        value:[50, 100]
+    };
+
+    const textBox2TrimEndDict = {
+        layerName:["Text-Box-2"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb1TST + 7.0, tb1TST + 7.5],
+        value:[50, 100]
+    };
+
+    const textBox1ScaleDict = {
+        layerName:["Text-Box-1"],
+        property:["scale"],
+        frames:[tb1TST + 0.5, tb1TST + 7.5],
+        value:[[100, 100], [105, 105]]
+    };
+
+    const textBox2ScaleDict = {
+        layerName:["Text-Box-2"],
+        property:["scale"],
+        frames:[tb1TST + 0.5, tb1TST + 7.5],
+        value:[[100, 100], [105, 105]]
+    };
+
+    const textBox1PropertiesDict = {
+        textBox1TrimStart: textBox1TrimStartDict,
+        textBox1TrimEnd: textBox1TrimEndDict,
+        textBox1Scale: textBox1ScaleDict
+    };
+
+    const textBox2PropertiesDict = {
+        textBox2TrimStart: textBox2TrimStartDict,
+        textBox2TrimEnd: textBox2TrimEndDict,
+        textBox2Scale: textBox2ScaleDict
+    };
+
+
+    for (var key in textBox1PropertiesDict){
+        genKeyframeSetter(textBox1PropertiesDict[key]);
+    }
+
+    for (var key in textBox2PropertiesDict){
+        genKeyframeSetter(textBox2PropertiesDict[key]);
+    }
+
+
+}
+
+function text1Setter(){
+    var text1StartX = 328;
+    var text1StartY = 244;
+
+    var t1ST = 2.2;
+
+    const text1OpacityDict = {
+        layerName:["EVD-Response"],
+        property:["opacity"],
+        frames:[t1ST, t1ST + 0.1, t1ST + 7.0, t1ST + 7.5],
+        value:[0, 100, 100, 0]
+    };
+
+    const text1ScaleDict = {
+        layerName:["EVD-Response"],
+        property:["scale"],
+        frames:[t1ST + 0.5, t1ST + 7.5],
+        value:[[100, 100], [105, 105]]
+    };
+
+    const text1PropertiesDict = {
+        text1Opacity: text1OpacityDict,
+        text1Scale: text1ScaleDict
+    };
+
+    for (var key in text1PropertiesDict){
+        genKeyframeSetter(text1PropertiesDict[key]);
+    }
 
 }
 
