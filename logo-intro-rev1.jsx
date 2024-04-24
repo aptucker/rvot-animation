@@ -56,12 +56,10 @@ function logoKeyframeSetter(){
     const dotPositionDict = {
         layerName:["Middle-Dot-AE"],
         property:["position"],
-        frames:[logoST + 0.4, logoST + 0.7, logoST + 2.5, logoST + 2.8, logoST + 3.8, logoST + 4.0],
+        frames:[logoST + 0.4, logoST + 0.7, logoST + 2.5, logoST + 2.8],
         value:[[dotStartX, dotStartY],
         [dotEndX, dotStartY],
         [dotEndX, dotStartY],
-        [dotEndX, dotEndY],
-        [dotEndX, dotEndY],
         [dotEndX, dotEndY + 250]]
     };
 
@@ -69,9 +67,6 @@ function logoKeyframeSetter(){
         dotScale: dotScaleDict,
         dotPosition: dotPositionDict
     };
-
-
-
 
     const lineTrimDict1 = {
         layerName:["Middle-Line-AE"],
@@ -90,11 +85,8 @@ function logoKeyframeSetter(){
     const linePositionDict = {
         layerName:["Middle-Line-AE"],
         property:["position"],
-        frames:[logoST, logoST + 2.5, logoST + 2.8, logoST + 3.8, logoST + 4.0],
+        frames:[logoST + 2.5, logoST + 2.8],
         value:[[lineStartX, lineStartY],
-        [lineStartX, lineStartY],
-        [lineStartX, lineEndY],
-        [lineStartX, lineEndY],
         [lineStartX, lineEndY + 250]]
     };
 
@@ -134,16 +126,21 @@ function logoKeyframeSetter(){
     const namePositionDict = {
         layerName:["Name-AE"],
         property:["position"],
-        frames:[logoST, logoST + 2.5, logoST + 2.8, logoST + 3.8, logoST + 4.0],
+        frames:[logoST + 2.5, logoST + 2.8],
         value:[[nameStartX, nameStartY],
-        [nameStartX, nameStartY],
-        [nameStartX, nameStartY + 50],
-        [nameStartX, nameStartY + 50],
         [nameEndX, nameEndY]]
     };
 
+    const nameWipeDict = {
+        layerName:["Name-AE"],
+        property:["Effects", "Linear Wipe", "Transition Completion"],
+        frames:[logoST + 1.3, logoST + 2.0],
+        value:[100, 0]
+    };
+
     const namePropertiesDict = {
-        namePosition: namePositionDict
+        namePosition: namePositionDict,
+        nameWipe: nameWipeDict
     };
 
 
@@ -300,9 +297,9 @@ function logoKeyframeSetter(){
     };
 
 
-    for (var key in nameMaskPropertiesDict){
-        genKeyframeSetter(nameMaskPropertiesDict[key]);
-    }
+    // for (var key in nameMaskPropertiesDict){
+    //     genKeyframeSetter(nameMaskPropertiesDict[key]);
+    // }
 
     for (var key in linePropertiesDict){
         genKeyframeSetter(linePropertiesDict[key]);
@@ -316,33 +313,33 @@ function logoKeyframeSetter(){
         genKeyframeSetter(dotPropertiesDict[key]);
     }
 
-    for (var key in osmoTitlePropertiesDict){
-        genKeyframeSetter(osmoTitlePropertiesDict[key]);
-    }
+    // for (var key in osmoTitlePropertiesDict){
+    //     genKeyframeSetter(osmoTitlePropertiesDict[key]);
+    // }
 
-    for (var key in sloganMaskPropertiesDict){
-        genKeyframeSetter(sloganMaskPropertiesDict[key]);
-    }
+    // for (var key in sloganMaskPropertiesDict){
+    //     genKeyframeSetter(sloganMaskPropertiesDict[key]);
+    // }
 
-    for (var key in biTitlePropertiesDict){
-        genKeyframeSetter(biTitlePropertiesDict[key]);
-    }
+    // for (var key in biTitlePropertiesDict){
+    //     genKeyframeSetter(biTitlePropertiesDict[key]);
+    // }
 
-    for (var key in biTitleMaskPropertiesDict){
-        genKeyframeSetter(biTitleMaskPropertiesDict[key])
-    }
+    // for (var key in biTitleMaskPropertiesDict){
+    //     genKeyframeSetter(biTitleMaskPropertiesDict[key])
+    // }
 
-    for (var key in desTitlePropertiesDict){
-        genKeyframeSetter(desTitlePropertiesDict[key]);
-    }    
+    // for (var key in desTitlePropertiesDict){
+    //     genKeyframeSetter(desTitlePropertiesDict[key]);
+    // }    
 
-    for (var key in desTitleMaskPropertiesDict){
-        genKeyframeSetter(desTitleMaskPropertiesDict[key]);
-    }
+    // for (var key in desTitleMaskPropertiesDict){
+    //     genKeyframeSetter(desTitleMaskPropertiesDict[key]);
+    // }
 
-    for (var key in mainTitlePropertiesDict){
-        genKeyframeSetter(mainTitlePropertiesDict[key]);
-    }
+    // for (var key in mainTitlePropertiesDict){
+    //     genKeyframeSetter(mainTitlePropertiesDict[key]);
+    // }
 
 
 }
