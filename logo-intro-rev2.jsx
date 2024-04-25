@@ -14,15 +14,19 @@ var buttonTwo = buttonGroup.add("button", undefined, "Test 2");
 
 
 buttonOne.onClick = function() {
+    app.beginUndoGroup("Function 1");
+    
 
+
+    app.endUndoGroup("Function 1");
 }
 
 buttonTwo.onClick = function() {
     
     app.beginUndoGroup("Function 2");
 
-    logoKeyframeSetter();
-
+    // logoKeyframeSetter();
+    headBlurSetter();
 
     app.endUndoGroup();
 
@@ -249,16 +253,9 @@ function logoKeyframeSetter(){
         // mainTitleScale: mainTitleScaleDict
     };
 
-    const headBlurDict = {
-        layerName:["Head-Full"],
-        property:["Effects", "Camera Lens Blur", "Blur Radius"],
-        frames:[0.0, logoST + 7.5, logoST + 8.0],
-        value:[20, 20, 0]
-    };
 
-    const headPropertiesDict = {
-        headBlur: headBlurDict
-    };
+
+
 
 
 
@@ -297,9 +294,7 @@ function logoKeyframeSetter(){
     }
 
 
-    for (var key in headPropertiesDict){
-        genKeyframeSetter(headPropertiesDict[key]);
-    }
+
 
 
 
@@ -322,6 +317,34 @@ function logoKeyframeSetter(){
     // for (var key in desTitleMaskPropertiesDict){
     //     genKeyframeSetter(desTitleMaskPropertiesDict[key]);
     // }
+
+
+
+}
+
+function headBlurSetter(){
+
+    var logoST = 0.1;
+
+    const headBlurDict = {
+        layerName:["Head-Full"],
+        property:["Effects", "Camera Lens Blur", "Blur Radius"],
+        frames:[0.0, logoST + 7.5, logoST + 8.0],
+        value:[10, 10, 0]
+    };
+
+
+
+    const headPropertiesDict = {
+        headBlur: headBlurDict
+    };
+
+
+
+    for (var key in headPropertiesDict){
+        genKeyframeSetter(headPropertiesDict[key]);
+    }
+
 
 
 
