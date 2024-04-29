@@ -15,7 +15,8 @@ buttonOne.onClick = function() {
     app.beginUndoGroup("Function 1");
 
     introSequence();
-
+    midFade();
+    outroSequence();
 
     app.endUndoGroup();
 }
@@ -31,6 +32,10 @@ buttonTwo.onClick = function() {
     textBox3Setter();
     text3Setter();
 
+    midFade();
+
+    controllerSetter();
+
     // outroSequence();
 
     app.endUndoGroup();
@@ -41,10 +46,8 @@ buttonThree.onClick = function(){
 
     app.beginUndoGroup("Function 3");
 
-    // liquidSetter();
-    // bgSetter();
-
-    outroSequence();
+    microSetter();
+    textBox4Setter();
 
     app.endUndoGroup();
 
@@ -52,6 +55,136 @@ buttonThree.onClick = function(){
 
 window.center();
 window.show();
+
+
+function microSetter(){
+    var mST = 2.0;
+
+    const microOpacityDict = {
+        layerName:["Micro-Insert"],
+        property:["opacity"],
+        frames:[mST, mST + 0.5, mST + 9.5, mST + 10.0],
+        value:[0, 100, 100, 0]
+    };
+
+    const microPropertiesDict = {
+        microOpacity: microOpacityDict
+    };
+
+    for (var key in microPropertiesDict){
+        genKeyframeSetter(microPropertiesDict[key]);
+    }
+}
+
+function textBox4Setter(){
+    var tb4TST = 2.0;
+
+    const textBox7TrimStartDict = {
+        layerName:["Text-Box-7"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb4TST, tb4TST + 0.5],
+        value:[100, 50]
+    };
+
+    const textBox8TrimStartDict = {
+        layerName:["Text-Box-8"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb4TST, tb4TST + 0.5],
+        value:[100, 50]
+    };
+
+    const textBox7TrimEndDict = {
+        layerName:["Text-Box-7"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb4TST + 9.5, tb4TST + 10.0],
+        value:[50, 100]
+    };
+
+    const textBox8TrimEndDict = {
+        layerName:["Text-Box-8"],
+        property:["Contents", "Trim Paths 1", "Start"],
+        frames:[tb4TST + 9.5, tb4TST + 10.0],
+        value:[50, 100]
+    };
+
+    // const textBox3ScaleDict = {
+    //     layerName:["Text-Box-3"],
+    //     property:["scale"],
+    //     frames:[tb1TST + 0.5, tb1TST + 7.5],
+    //     value:[[100, 100], [105, 105]]
+    // };
+
+    // const textBox4ScaleDict = {
+    //     layerName:["Text-Box-4"],
+    //     property:["scale"],
+    //     frames:[tb1TST + 0.5, tb1TST + 7.5],
+    //     value:[[100, 100], [105, 105]]
+    // };
+
+    const textBox7PropertiesDict = {
+        textBox7TrimStart: textBox7TrimStartDict,
+        textBox7TrimEnd: textBox7TrimEndDict//,
+        // textBox3Scale: textBox3ScaleDict
+    };
+
+    const textBox8PropertiesDict = {
+        textBox8TrimStart: textBox8TrimStartDict,
+        textBox8TrimEnd: textBox8TrimEndDict//,
+        // textBox4Scale: textBox4ScaleDict
+    };
+
+
+    for (var key in textBox7PropertiesDict){
+        genKeyframeSetter(textBox7PropertiesDict[key]);
+    }
+
+    for (var key in textBox8PropertiesDict){
+        genKeyframeSetter(textBox8PropertiesDict[key]);
+    }
+
+}
+
+function controllerSetter(){
+    var cnST = 13.5;
+    
+    const controllerOpacityDict = {
+        layerName:["Controller Square.jpg"],
+        property:["opacity"],
+        frames:[cnST, cnST + 0.5, cnST + 6.5, cnST + 6.7],
+        value:[0, 100, 100, 0]
+    };
+
+    const controllerPropertiesDict = {
+        controllerOpacity: controllerOpacityDict
+    };
+
+    for (var key in controllerPropertiesDict){
+        genKeyframeSetter(controllerPropertiesDict[key]);
+    }
+
+
+}
+
+function midFade(){
+    var mfST = 20.0;
+
+    const topBlackOpacityDict = {
+        layerName:["Top-Fade-Black"],
+        property:["opacity"],
+        frames:[mfST, mfST + 0.5, mfST + 1.0],
+        value:[0, 100, 0]
+    };
+
+    const topBlackPropertiesDict = {
+        topBlackOpacity: topBlackOpacityDict
+    };
+
+    for (var key in topBlackPropertiesDict){
+        genKeyframeSetter(topBlackPropertiesDict[key]);
+    }
+
+
+}
 
 function introSequence(){
 
@@ -83,7 +216,7 @@ function introSequence(){
     const rvotVaporCompOpacityDict = {
         layerName:["Vapor-Comp"],
         property:["opacity"],
-        frames:[introST + 22.0, introST + 23.0],
+        frames:[introST + 20.0, introST + 20.5],
         value:[100, 0],
     };
 
@@ -94,7 +227,7 @@ function introSequence(){
     const rvotCSFCompOpacityDict = {
         layerName:["CSF-Comp"],
         property:["opacity"],
-        frames:[introST + 22.0, introST + 23.0],
+        frames:[introST + 20.5, introST + 21.0],
         value:[0, 100]
     };
 

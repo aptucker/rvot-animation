@@ -15,8 +15,12 @@ buttonOne.onClick = function() {
     app.beginUndoGroup("Function 1");
 
     introSequence();
+    textBox1Setter();
+    text1Setter();
+    textBox2Setter();
+    text2Setter();
+   
 
-    outroSequence();
 
     app.endUndoGroup();
 }
@@ -25,12 +29,7 @@ buttonTwo.onClick = function() {
     
     app.beginUndoGroup("Function 2");
 
-    textBox1Setter();
-    text1Setter();
-    textBox2Setter();
-    text2Setter();
-
-
+    outroSequence();
 
     app.endUndoGroup();
 
@@ -57,7 +56,7 @@ function introSequence(){
     var introST = 0.0;
 
     const topOpacityDict = {
-        layerName:["Top-Fade"],
+        layerName:["Top-Fade-Black"],
         property:["opacity"],
         frames:[introST, introST + 1.0],
         value:[100, 0]
@@ -68,21 +67,21 @@ function introSequence(){
     };
 
 
-    const rvotFullOpacityDict = {
-        layerName:["RVOT-Full"],
-        property:["opacity"],
-        frames:[introST + 5.0, introST + 6.0],
-        value:[100, 0]
-    };
+    // const rvotFullOpacityDict = {
+    //     layerName:["RVOT-Full"],
+    //     property:["opacity"],
+    //     frames:[introST + 5.0, introST + 6.0],
+    //     value:[100, 0]
+    // };
 
-    const rvotFullPropertiesDict = {
-        rvotFullOpacity: rvotFullOpacityDict
-    };
+    // const rvotFullPropertiesDict = {
+    //     rvotFullOpacity: rvotFullOpacityDict
+    // };
 
     const rvotCompOpacityDict = {
         layerName:["Vapor-Comp"],
         property:["opacity"],
-        frames:[introST + 5.5, introST + 6.0],
+        frames:[introST + 5.0, introST + 6.0],
         value:[0, 100],
     };
 
@@ -94,9 +93,9 @@ function introSequence(){
         genKeyframeSetter(topPropertiesDict[key]);
     }
 
-    for (var key in rvotFullPropertiesDict){
-        genKeyframeSetter(rvotFullPropertiesDict[key]);
-    }
+    // for (var key in rvotFullPropertiesDict){
+    //     genKeyframeSetter(rvotFullPropertiesDict[key]);
+    // }
 
     for (var key in rvotCompPropertiesDict){
         genKeyframeSetter(rvotCompPropertiesDict[key]);
@@ -109,7 +108,7 @@ function textBox2Setter(){
     var compMiddleX = 1920/2;
     var compMiddleY = 1080/2;
 
-    var tb1TST = 8.0;
+    var tb1TST = 20.0;
 
     const textBox3TrimStartDict = {
         layerName:["Text-Box-3"],
@@ -181,17 +180,17 @@ function text2Setter(){
     var text2StartX = 1610;
     var text2StartY = 240;
 
-    var t1ST = 8.0;
+    var t1ST = 20.0;
 
     const text2OpacityDict = {
-        layerName:["Pervaporation"],
+        layerName:["Functionality"],
         property:["opacity"],
         frames:[t1ST, t1ST + 0.1, t1ST + 7.0, t1ST + 7.5],
         value:[0, 100, 100, 0]
     };
 
     const text2ScaleDict = {
-        layerName:["Pervaporation"],
+        layerName:["Functionality"],
         property:["scale"],
         frames:[t1ST + 0.5, t1ST + 7.5],
         value:[[100, 100], [105, 105]]
@@ -213,7 +212,7 @@ function textBox1Setter(){
     var compMiddleX = 1920/2;
     var compMiddleY = 1080/2;
 
-    var tb1TST = 1.0;
+    var tb1TST = 10.0;
 
     const textBox1TrimStartDict = {
         layerName:["Text-Box-1"],
@@ -285,17 +284,17 @@ function text1Setter(){
     var text1StartX = 328;
     var text1StartY = 244;
 
-    var t1ST = 1.0;
+    var t1ST = 10.0;
 
     const text1OpacityDict = {
-        layerName:["Removal"],
+        layerName:["Outcomes"],
         property:["opacity"],
         frames:[t1ST, t1ST + 0.1, t1ST + 7.0, t1ST + 7.5],
         value:[0, 100, 100, 0]
     };
 
     const text1ScaleDict = {
-        layerName:["Removal"],
+        layerName:["Outcomes"],
         property:["scale"],
         frames:[t1ST + 0.5, t1ST + 7.5],
         value:[[100, 100], [105, 105]]
@@ -314,7 +313,7 @@ function text1Setter(){
 
 
 function outroSequence(){
-    var outroST = 15.0;
+    var outroST = 29.0;
 
     const topOpacityDict = {
         layerName:["Top-Fade"],

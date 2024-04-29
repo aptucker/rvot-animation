@@ -42,13 +42,15 @@ function logoKeyframeSetter(){
     const osmoPositionDict = {
         layerName:["OsmoFloTM"],
         property:["position"],
-        frames:[0, 0.1, 0.4, 0.8, 1.5, 1.7],
+        frames:[0, 0.1, 0.4, 0.8, 1.5, 1.7, 5.5, 6.0],
         value:[[compMiddleX, compMiddleY],
         [compMiddleX, compMiddleY],
         [compMiddleX - 10, compMiddleY],
         [compMiddleX - 400, compMiddleY],
         [compMiddleX - 410, compMiddleY],
-        [compMiddleX - 410, compMiddleY - 250]]
+        [compMiddleX - 410, compMiddleY - 250],
+        [compMiddleX - 410, compMiddleY - 250],
+        [compMiddleX - 410, compMiddleY - 250 - 2*compMiddleY]]
     };
 
     const osmoPropertiesDict = {
@@ -60,43 +62,45 @@ function logoKeyframeSetter(){
         genKeyframeSetter(osmoPropertiesDict[key]);
     }
 
-    var triStartY = compMiddleY + 0;
+    var biStartY = compMiddleY + 0;
 
-    const triPositionDict = {
-        layerName:["Trimodal EVD System for"],
+    const biPositionDict = {
+        layerName:["Bimodal EVD System for"],
         property:["position"],
-        frames:[0, 0.8, 1.5, 1.7],
-        value:[[compMiddleX + 200, triStartY],
-        [compMiddleX + 200, triStartY],
-        [compMiddleX + 190, triStartY],
-        [compMiddleX + 190, triStartY - 250]]
+        frames:[0, 0.8, 1.5, 1.7, 5.5, 6.0],
+        value:[[compMiddleX + 200, biStartY],
+        [compMiddleX + 200, biStartY],
+        [compMiddleX + 190, biStartY],
+        [compMiddleX + 190, biStartY - 250],
+        [compMiddleX + 190, biStartY - 250],
+        [compMiddleX + 190, biStartY - 250 - 2*compMiddleY]] 
     };
 
-    const triPropertiesDict = {
-        triPosition: triPositionDict
+    const biPropertiesDict = {
+        biPosition: biPositionDict
     };
 
-    for (var key in triPropertiesDict){
-        genKeyframeSetter(triPropertiesDict[key])
+    for (var key in biPropertiesDict){
+        genKeyframeSetter(biPropertiesDict[key])
     }
 
-    const triMaskPositionDict = {
-        layerName:["Trimodal-Mask"],
+    const biMaskPositionDict = {
+        layerName:["Bimodal-Mask"],
         property:["position"],
         frames:[0, 0.8, 1.2, 1.7],
         value:[[compMiddleX + 200, triStartY],
-        [compMiddleX + 200, triStartY],
-        [compMiddleX + 1100, triStartY],
-        [compMiddleX + 1100, triStartY - 250]]
+        [compMiddleX + 200, biStartY],
+        [compMiddleX + 1100, biStartY],
+        [compMiddleX + 1100, biStartY - 250]]
     };
 
-    const triMaskPropertiesDict = {
-        triPosition: triMaskPositionDict
+    const biMaskPropertiesDict = {
+        biPosition: biMaskPositionDict
     };
 
 
-    for (var key in triMaskPropertiesDict){
-        genKeyframeSetter(triMaskPropertiesDict[key]);
+    for (var key in biMaskPropertiesDict){
+        genKeyframeSetter(biMaskPropertiesDict[key]);
     }
 
     var traumaStartY = compMiddleY - 170;
@@ -104,9 +108,11 @@ function logoKeyframeSetter(){
     const traumaPositionDict = {
         layerName:["Traumatic Brain Injury"],
         property:["position"],
-        frames:[0, 1.7],
+        frames:[0, 2.2, 5.5, 6.0],
         value:[[compMiddleX, traumaStartY],
-        [compMiddleX, traumaStartY]]
+        [compMiddleX, traumaStartY],
+        [compMiddleX, traumaStartY],
+        [compMiddleX, traumaStartY - 2*compMiddleY]]
     };
 
     const traumaPropertiesDict = {
@@ -120,7 +126,7 @@ function logoKeyframeSetter(){
     const traumaMaskPositionDict = {
         layerName:["Trauma-Mask"],
         property:["position"],
-        frames:[0, 1.7, 1.9],
+        frames:[0, 2.2, 2.5],
         value:[[compMiddleX, traumaStartY],
         [compMiddleX, traumaStartY],
         [compMiddleX - 1000, traumaStartY]]
@@ -139,9 +145,11 @@ function logoKeyframeSetter(){
     const localPositionDict = {
         layerName:["Localized"],
         property:["position"],
-        frames:[1.9, 2.1],
+        frames:[3.5, 3.7, 5.5, 6.0],
         value:[[localStartX, compMiddleY],
-        [localStartX - 835, compMiddleY]]
+        [localStartX - 835, compMiddleY],
+        [localStartX - 835, compMiddleY],
+        [localStartX - 835, compMiddleY - 2*compMiddleY]]
     };
 
     const localPropertiesDict = {
@@ -157,9 +165,11 @@ function logoKeyframeSetter(){
     const osmotherapyPositionDict = {
         layerName:["Osmotherapy"],
         property:["position"],
-        frames:[2.2, 2.3],
+        frames:[3.8, 4.0, 5.5, 6.0],
         value:[[osmotherapyStartX, compMiddleY],
-        [osmotherapyStartX - 735, compMiddleY]]
+        [osmotherapyStartX - 735, compMiddleY],
+        [osmotherapyStartX - 735, compMiddleY],
+        [osmotherapyStartX - 735, compMiddleY - 2*compMiddleY]]
     };
 
     const osmotherapyPropertiesDict = {
@@ -173,7 +183,7 @@ function logoKeyframeSetter(){
     const loMaskPositionDict = {
         layerName:["LO-Mask"],
         property:["position"],
-        frames:[2.2, 2.3],
+        frames:[3.8, 4.0],
         value:[[1700, 550], [2200, 550]]
     };
 
@@ -184,6 +194,24 @@ function logoKeyframeSetter(){
     for (var key in loMaskPropertiesDict){
         genKeyframeSetter(loMaskPropertiesDict[key]);
     }
+
+    const baseMaskPositionDict = {
+        layerName:["Base-Mask"],
+        property:["position"],
+        frames:[0, 5.5, 6.0],
+        value:[[compMiddleX, compMiddleY],
+        [compMiddleX, compMiddleY],
+        [compMiddleX, compMiddleY - 2*compMiddleY]]
+    };
+
+    const baseMaskPropertiesDict = {
+        baseMaskPosition: baseMaskPositionDict
+    };
+
+    for (var key in baseMaskPropertiesDict){
+        genKeyframeSetter(baseMaskPropertiesDict[key]);
+    }
+
 
 
 }

@@ -21,12 +21,6 @@ buttonOne.onClick = function() {
     wtbTextSetter();
     vetbSetter();
     vetbTextSetter();
-    // text1Setter();
-    // textBox2Setter();
-    // text2Setter();
-    // textBox3Setter();
-    // text3Setter();
-    // text4Setter();
 
     app.endUndoGroup();
 }

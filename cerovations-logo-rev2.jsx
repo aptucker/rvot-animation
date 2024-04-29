@@ -46,11 +46,13 @@ function logoKeyframeSetter(){
     const dotPositionDict = {
         layerName:["Middle-Dot-AE"],
         property:["position"],
-        frames:[0.4, 0.7, 3.0, 3.2],
+        frames:[0.4, 0.7, 2.5, 2.8, 3.8, 4.0],
         value:[[compMiddleX, compMiddleY],
         [compMiddleX - 315, compMiddleY],
         [compMiddleX - 315, compMiddleY],
-        [compMiddleX - 315, compMiddleY - 50]]
+        [compMiddleX - 315, compMiddleY - 50],
+        [compMiddleX - 315, compMiddleY - 50],
+        [compMiddleX - 2*compMiddleX, compMiddleY - 50]]
     };
 
     const dotPropertiesDict = {
@@ -80,10 +82,12 @@ function logoKeyframeSetter(){
     const linePositionDict = {
         layerName:["Middle-Line-AE"],
         property:["position"],
-        frames:[0.0, 3.0, 3.2],
-        value:[[820, 540],
-        [820, 540],
-        [820, 540 - 50]]
+        frames:[0.0, 2.5, 2.8, 3.8, 4.0],
+        value:[[820, compMiddleY],
+        [820, compMiddleY],
+        [820, compMiddleY - 50],
+        [820, compMiddleY - 50],
+        [820 - 2*compMiddleX, compMiddleY - 50]]
     };
 
     const linePropertiesDict = {
@@ -114,10 +118,12 @@ function logoKeyframeSetter(){
     const namePositionDict = {
         layerName:["Name-AE"],
         property:["position"],
-        frames:[0.0, 3.0, 3.2],
-        value:[[960, 540],
-        [960, 540],
-        [960, 540 - 50]]
+        frames:[0.0, 2.5, 2.8, 3.8, 4.0],
+        value:[[compMiddleX, compMiddleY],
+        [compMiddleX, compMiddleY],
+        [compMiddleX, compMiddleY - 50],
+        [compMiddleX, compMiddleY - 50],
+        [compMiddleX - 2*compMiddleX, compMiddleY - 50]]
     };
 
     const namePropertiesDict = {
@@ -133,10 +139,12 @@ function logoKeyframeSetter(){
     const sloganMaskPositionDict = {
         layerName:["Slogan-Mask"],
         property:["position"],
-        frames:[0.0, 3.0, 3.2],
+        frames:[0.0, 2.5, 2.8, 3.8, 4.0],
         value:[[compMiddleX, compMiddleY],
         [compMiddleX, compMiddleY],
-        [compMiddleX, compMiddleY - 50]]
+        [compMiddleX, compMiddleY - 50],
+        [compMiddleX, compMiddleY - 50],
+        [compMiddleX - 2*compMiddleX, compMiddleY - 50]]
     };
 
     const sloganMaskPropertiesDict = {
@@ -150,10 +158,12 @@ function logoKeyframeSetter(){
     const presentPositionDict = {
         layerName:["PRESENTS"],
         property:["position"],
-        frames:[0.0, 3.0, 3.2],
+        frames:[0.0, 2.5, 2.8, 3.8, 4.0],
         value:[[compMiddleX, compMiddleY],
         [compMiddleX, compMiddleY],
-        [compMiddleX, compMiddleY + 50]]
+        [compMiddleX, compMiddleY + 50],
+        [compMiddleX, compMiddleY + 50],
+        [compMiddleX - 2*compMiddleX, compMiddleY + 50]]
     };
 
     const presentPropertiesDict = {
